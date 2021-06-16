@@ -29,6 +29,7 @@
       section: network
       option: generateHosts
       value: "false"
+      
   # install packages
   - name: update all
     dnf:
@@ -110,6 +111,8 @@
       - { option: cgroup_manager, value: '"cgroupsfs"' }
       - { option: events_logger, value: '"file"' } 
       # events_logger = "file"
+    tags:
+      - podman
 
   # check if podman runs smoothly, otherwise reinstall shadow-utils
   - name: check podman
