@@ -4,7 +4,7 @@
 
   tasks:
   # print facts
-  - name: Print facts
+  - name: print facts
     debug:
       # var: ansible_facts
       msg: 
@@ -32,9 +32,19 @@
       
   # install packages
   - name: update all
+    register: update_all
     dnf:
       state: latest
       name: "*"
+    tags:
+      - update
+  - name: update all result
+    debug:
+      msg:
+      - "{{update_all}}"
+    tags:
+      - update
+ 
   - name: install ansible
     dnf:
       state: latest
@@ -118,6 +128,7 @@
   - name: check podman
     command: podman info
     register: podman_result
+    changed_when: false
     tags:
       - podman
 
