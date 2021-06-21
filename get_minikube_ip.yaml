@@ -1,0 +1,33 @@
+- hosts: localhost
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: get minikube ip
+    command: "/mnt/c/Program\\ Files/Kubernetes/Minikube/minikube.exe ip"
+    # command: minikube.exe ip
+    register: minikube_result
+    changed_when: false
+    
+  
+  - name: print minikube ip
+    debug:
+      msg: 
+      - "{{ minikube_result.rc }}"
+      - "{{ minikube_result.stdout }}"
+
+  - name: set minikube ip in /etc/hosts
+    lineinfile:
+      path: /etc/hosts
+      state: present
+      regexp: '.* kubernetes'
+      line: '{{ minikube_result.stdout }} kubernetes'
+      # line: '10.0.0.1 kubernetes'
+    when: minikube_result is succeeded
+  
+  - name: ping kubernetes
+    command: ping kubernetes -c 1 -t 3
+    register: result
+    changed_when: false
+    # ignore_errors: true
+    failed_when: result.rc > 0
