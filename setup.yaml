@@ -182,7 +182,8 @@
       - adduser
   
   # passwordless sudo
-  - lineinfile:
+  - name: passwordless sudo
+    lineinfile:
       path: /etc/sudoers
       state: present
       regexp: '^%wheel'
