@@ -3,6 +3,13 @@
   become_method: sudo
 
   tasks:
+  - name: enable forward to wsl2
+    command: "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe d:/Programs/bin/wslforward.ps1" 
+    # - "d:\\Programs\\bin\\wslforward.ps1" 
+    when: set_forward is defined and set_forward == '1'
+    tags:
+    - forward
+
   # print facts
   - name: print facts
     debug:
