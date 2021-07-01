@@ -43,6 +43,7 @@
     dnf:
       state: latest
       name: "*"
+    # when: update_all is defined and update_all == '1'
     tags:
       - update
   - name: update all result
