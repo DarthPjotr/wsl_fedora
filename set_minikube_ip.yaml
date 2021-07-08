@@ -10,7 +10,8 @@
     - forward
 
   - name: get minikube ip
-    command: "/mnt/c/Program\\ Files/Kubernetes/Minikube/minikube.exe ip"
+    command: "/mnt/c/Program\\ Files/Kubernetes/Minikube/minikube.exe ip" 
+    # -p mykube"
     # command: minikube.exe ip
     register: minikube_result
     changed_when: false
