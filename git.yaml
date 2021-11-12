@@ -19,6 +19,6 @@
     community.general.git_config:
         name: credential.helper
         scope: global
-        value: "/mnt/c/Progra\\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe"
+        value: "/mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe"
 
 
