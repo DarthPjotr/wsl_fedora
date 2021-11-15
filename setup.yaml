@@ -84,6 +84,7 @@
       - bind-utils
       - iproute
       - telnet
+      - hostname
   - name: install container tools
     dnf:
       state: latest
