@@ -8,6 +8,8 @@ MINIKUBE=${WIN_HOME}/.minikube
 
 mkdir -p ${KUBE_HOME}/minikube
 cp ${WIN_HOME}/.kube/config ${KUBE_HOME}/minikube.config
+export KUBECONFIG=${HOME}/.kube/config:${HOME}/.kube/minikube.config
+
 # C:\Users\pkvan\.minikube\profiles\minikube\
 sed -i 's@C:\\Users\\pkvan\\.minikube\\profiles\\minikube\\@'${KUBE_HOME}'/minikube/@g' ${KUBE_HOME}/minikube.config
 # C:\Users\pkvan\.minikube\
