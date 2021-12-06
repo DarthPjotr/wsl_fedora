@@ -86,6 +86,7 @@
       - telnet
       - hostname
       - openssl
+      - net-tools
   - name: install container tools
     dnf:
       state: latest
